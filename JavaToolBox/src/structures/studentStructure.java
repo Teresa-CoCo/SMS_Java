@@ -10,12 +10,13 @@ public class studentStructure {
     Double mathScore;
     String homeTown;
     String emailAdd;
+    //added
     Integer uncomingNum;
     Integer totalComingNum;
     Double needPoint;
     String classTable;
 
-public  studentStructure(String name, String id, int age, String major, Double javaScore, Double mathScore,String homeTown, String emailAdd){
+public  studentStructure(String name, String id, int age, String major, Double javaScore, Double mathScore,String homeTown, String emailAdd, Integer uncomingNum, Integer totalComingNum, Double needPoint, String classTable){
     this.name = name;
     this.id = id;
     this.age = age;
@@ -24,6 +25,10 @@ public  studentStructure(String name, String id, int age, String major, Double j
     this.homeTown = homeTown;
     this.emailAdd = emailAdd;
     this.mathScore = mathScore;
+    this.uncomingNum = uncomingNum;
+    this.totalComingNum = totalComingNum;
+    this.needPoint = needPoint;
+    this.classTable = classTable;
 }
 public double getMathScore(){
     return mathScore;
@@ -73,6 +78,31 @@ public String getId(){
 public void setId(String id){
     this.id = id;
 }
+public Integer getUncomingNum(){
+    return uncomingNum;
+}
+public void setUncomingNum(Integer uncomingNum){
+    this.uncomingNum = uncomingNum;
+}
+public Integer getTotalComingNum(){
+    return totalComingNum;
+}
+public void setTotalComingNum(Integer totalComingNum){
+    this.totalComingNum = totalComingNum;
+}
+public Double getNeedPoint(){
+    return needPoint;
+}
+public void setNeedPoint(Double needPoint){
+    this.needPoint = needPoint;
+}
+public String getClassTable(){
+    return classTable;
+}
+public void setClassTable(String classTable){
+    this.classTable = classTable;
+}
+
 @Override
 public String toString() {
     return "Student Name: " + name +
@@ -82,7 +112,11 @@ public String toString() {
             ", Java Score: " + (javaScore == null ? "N/A" : javaScore) +
             ", Math Score: " + (mathScore == null ? "N/A" : mathScore) +
             ", Hometown: " + homeTown +
-            ", Email: " + emailAdd;
+            ", Email: " + emailAdd +
+            ", Uncoming Num: " + uncomingNum +
+            ", Total Coming Num: " + totalComingNum +
+            ", Need Point: " + needPoint +
+            ", Class Table: " + classTable;
 }
 }
 

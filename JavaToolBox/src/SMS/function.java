@@ -9,11 +9,11 @@ public class function {
         Scanner sc = new Scanner(System.in);
 
         //为方便这里指定学生信息，直接使用键盘录入
-        students.add(new studentStructure("张三", "2019001", 20, "计算机科学与技术", 90.0, 85.0, "北京", "123@qq.com"));
-        students.add(new studentStructure("李四", "2019002", 21, "软件工程", 80.0, 88.0, "上海", "456@126.com"));
-        students.add(new studentStructure("王五", "2019003", 22, "通信工程", 90.0, 85.0, "广州", "789@163.com"));
-        students.add(new studentStructure("郭叔", "2019004", 21, "软件工程", 85.0, 90.0, "上海", "456@163.com"));
-        students.add(new studentStructure("王红", "2019005", 21, "软件工程", 90.0, 85.0, "上海", "888@163.com"));
+        students.add(new studentStructure("张三", "2019001", 20, "计算机科学与技术", 90.0, 85.0, "北京", "123@qq.com",null,null,null,null));
+        students.add(new studentStructure("李四", "2019002", 21, "软件工程", 80.0, 88.0, "上海", "456@126.com",null,null,null,null));
+        students.add(new studentStructure("王五", "2019003", 22, "通信工程", 90.0, 85.0, "广州", "789@163.com",null,null,null,null));
+        students.add(new studentStructure("郭叔", "2019004", 21, "软件工程", 85.0, 90.0, "上海", "456@163.com",null,null,null,null));
+        students.add(new studentStructure("王红", "2019005", 21, "软件工程", 90.0, 85.0, "上海", "888@163.com",null,null,null,null));
 //        //使用键盘录入5个学生信息
 //        for (int i = 0; i < 5; i++) {
 //            System.out.println("请输入第" + (i + 1) + "个学生的信息：");
@@ -115,7 +115,7 @@ public class function {
                             String homeTown = sc.next();
                             System.out.print("邮箱：");
                             String emailAdd = sc.next();
-                            students.add(new studentStructure(name, id, age, major, scoreJava, scoremath, homeTown, emailAdd));
+                            students.add(new studentStructure(name, id, age, major, scoreJava, scoremath, homeTown, emailAdd,null,null,null,null));
                             System.out.println("添加成功！");
                             printInfo(students);
                             break;
