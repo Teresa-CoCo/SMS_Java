@@ -13,8 +13,6 @@ public class isAdmin {
 
             pstmt.setString(1, username);
             ResultSet rs = pstmt.executeQuery();
-
-
             if (rs.next()) {
                 return true;
             }
@@ -22,7 +20,6 @@ public class isAdmin {
             System.out.println("数据库连接失败: " + e.getMessage());
             e.printStackTrace();
         }
-
         return false;
     }
 }
