@@ -2,7 +2,7 @@ package structures;
 
 
 public class classTableStructure {
-    //课程名，课程描述，教师，上课节数，周几上课，上课周数，上课时间表，课程学分，总需要学分，课程容量
+    //课程名，课程描述，教师，上课节数，周几上课，上课周数，上课时间表，课程学分，课程容量，已选课人数，上课教室
     String className;
     String classDesribtion;
     String teacherName;
@@ -12,7 +12,9 @@ public class classTableStructure {
     Integer[][] classTimeTable;
     Double classPoint;
     Double totalNeedPoint;
+    Integer selectedPeople;
     Integer classCapacity;
+    Integer classroom;
 
     public classTableStructure(String className, String classDesribtion, String teacherName, Integer classTime, Integer classWeekly, Integer classTotalWeek, Integer[][] classTimeTable, Double classPoint, Double totalNeedPoint, Integer classCapacity) {
         this.className = className;
@@ -25,9 +27,26 @@ public class classTableStructure {
         this.classPoint = classPoint;
         this.totalNeedPoint = totalNeedPoint;
         this.classCapacity = classCapacity;
+        this.selectedPeople = selectedPeople;
+        this.classroom = classroom;
     }
 
 
+    public Integer getSelectedPeople() {
+        return selectedPeople;
+    }
+
+    public void setSelectedPeople(Integer selectedPeople) {
+        this.selectedPeople = selectedPeople;
+    }
+    public Integer getClassroom() {
+        return classroom;
+    }
+
+    public void setClassroom(Integer classroom) {
+        this.classroom = classroom;
+    }
+    
     public String getClassName() {
         return className;
     }
@@ -122,6 +141,7 @@ public class classTableStructure {
                 ", classPoint=" + classPoint +
                 ", totalNeedPoint=" + totalNeedPoint +
                 ", classCapacity=" + classCapacity +
+                ", selectedPeople=" + selectedPeople +
                 '}';
     }
 
