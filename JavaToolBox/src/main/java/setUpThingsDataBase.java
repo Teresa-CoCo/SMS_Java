@@ -12,11 +12,13 @@ public class setUpThingsDataBase {
             if (conn != null) {
                 try (Statement stmt = conn.createStatement()) {
                     // 执行 SQL 语句
-                    String sql = "CREATE TABLE IF NOT EXISTS thingname (" +
-                            "thing_id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                            "username TEXT NOT NULL UNIQUE," +
-                            "amount INTEGER NOT NULL," +
-                            "money INTEGER NOT NULL"+
+                    String sql ="CREATE TABLE IF NOT EXISTS shopping_history (" +
+                            "    record_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                            "    username TEXT NOT NULL," +
+                            "    product_id INTEGER NOT NULL," +
+                            "    quantity INTEGER NOT NULL," +
+                            "    purchase_price REAL NOT NULL," +
+                            "    purchase_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
                             ");";
                     stmt.execute(sql);
                     System.out.println("表已成功创建");
