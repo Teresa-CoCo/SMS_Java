@@ -33,16 +33,16 @@ public class BuyOperate {
                             removeFromCart(conncart, uid, thing_id, quantity);
                             // 计算总金额
                             double totalCost = price * quantity;
-                            // 提交事务
+
                             conn.commit();
                             System.out.println("结算成功，总金额: $" + totalCost);
                         } else {
                             System.out.println("库存不足，无法结算");
-                            conn.rollback();  // 库存不足，回滚事务
+                            conn.rollback();
                         }
                     } else {
                         System.out.println("商品不存在");
-                        conn.rollback();  // 商品不存在，回滚事务
+                        conn.rollback();
                     }
                 }
             }

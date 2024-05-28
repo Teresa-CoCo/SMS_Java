@@ -8,8 +8,8 @@ public class changeManagerPassword {
         try (Connection conn = DriverManager.getConnection(url);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setString(1, newPassword); // 设置新密码
-            pstmt.setString(2, username); // 设置用户名以定位记录
+            pstmt.setString(1, newPassword);
+            pstmt.setString(2, username);
             if (isAdmin) {
                 int affectedRows = pstmt.executeUpdate(); // 执行更新
 

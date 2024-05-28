@@ -39,11 +39,11 @@ public class ShoppingHistory {
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                System.out.println("Record ID: " + rs.getInt("record_id"));
-                System.out.println("Product ID: " + rs.getInt("product_id"));
-                System.out.println("Quantity: " + rs.getInt("amount"));
-                System.out.println("Purchase Price: " + rs.getDouble("purchase_price"));
-                System.out.println("Purchase Date: " + rs.getString("purchase_date"));
+                System.out.println("订单号: " + rs.getInt("record_id"));
+                System.out.println("商品ID: " + rs.getInt("product_id"));
+                System.out.println("数量: " + rs.getInt("amount"));
+                System.out.println("付款金额: " + rs.getDouble("purchase_price"));
+                System.out.println("付款日期: " + rs.getString("purchase_date"));
             }
         } catch (SQLException e) {
             System.out.println("数据库连接失败或者操作出错: " + e.getMessage());
@@ -62,11 +62,11 @@ public class ShoppingHistory {
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                System.out.println("Record ID: " + rs.getInt("username"));
-                System.out.println("Product ID: " + rs.getInt("product_id"));
-                System.out.println("Quantity: " + rs.getInt("amount"));
-                System.out.println("Purchase Price: " + rs.getDouble("purchase_price"));
-                System.out.println("Purchase Date: " + rs.getString("purchase_date"));
+                System.out.println("用户名: " + rs.getInt("username"));
+                System.out.println("商品ID: " + rs.getInt("product_id"));
+                System.out.println("数量: " + rs.getInt("amount"));
+                System.out.println("付款价格: " + rs.getDouble("purchase_price"));
+                System.out.println("付款时间: " + rs.getString("purchase_date"));
             }
         } catch (SQLException e) {
             System.out.println("数据库连接失败或者操作出错: " + e.getMessage());

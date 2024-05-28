@@ -113,10 +113,10 @@ public class ThingOperate {
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                System.out.println("Thing ID: " + rs.getInt("thing_id"));
-                System.out.println("Thing Name: " + rs.getString("thing_name"));
-                System.out.println("Amount: " + rs.getInt("amount"));
-                System.out.println("Price: $" + rs.getDouble("money"));
+                System.out.println("商品ID: " + rs.getInt("thing_id"));
+                System.out.println("商品名: " + rs.getString("thing_name"));
+                System.out.println("数量: " + rs.getInt("amount"));
+                System.out.println("价格: $" + rs.getDouble("money"));
             } else {
                 System.out.println("没有找到指定的商品");
             }
