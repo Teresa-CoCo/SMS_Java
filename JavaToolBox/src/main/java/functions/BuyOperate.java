@@ -61,11 +61,12 @@ public class BuyOperate {
     }
 
     private static void addToPurchaseHistory(Connection conn, int uid, int thing_id, int quantity, double price) throws SQLException {
-        try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO purchase_history(uid, thing_id, amount, purchase_price) VALUES(?,?,?,?)")) {
+        try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO purchase_history(username, product_id, amount, purchase_price, purchase_date) VALUES(?,?,?,?,?)")) {
             pstmt.setInt(1, uid);
             pstmt.setInt(2, thing_id);
             pstmt.setInt(3, quantity);
             pstmt.setDouble(4, price);
+            pstmt.setString(5, java.time.LocalDateTime.now().toString());
             pstmt.executeUpdate();
         }
     }

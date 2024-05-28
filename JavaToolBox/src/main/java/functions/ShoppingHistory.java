@@ -6,7 +6,7 @@ public class ShoppingHistory {
     public static void addPurchaseRecord(String username, int product_id, int quantity, double purchase_price) {
         String url = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\history.db";  // 数据库连接 URL
 
-        String sql = "INSERT INTO shopping_history(username, product_id, quantity, purchase_price, purchase_date) VALUES(?,?,?,?, CURRENT_TIMESTAMP)";
+        String sql = "INSERT INTO purchase_history(username, product_id, quantity, purchase_price, purchase_date) VALUES(?,?,?,?, CURRENT_TIMESTAMP)";
 
         try (Connection conn = DriverManager.getConnection(url);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -30,7 +30,7 @@ public class ShoppingHistory {
     public static void printUserShoppingHistory(String username) {
         String url = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\history.db";  // 数据库连接 URL
 
-        String sql = "SELECT * FROM shopping_history WHERE username = ?";
+        String sql = "SELECT * FROM purchase_history WHERE username = ?";
 
         try (Connection conn = DriverManager.getConnection(url);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -41,7 +41,7 @@ public class ShoppingHistory {
             while (rs.next()) {
                 System.out.println("Record ID: " + rs.getInt("record_id"));
                 System.out.println("Product ID: " + rs.getInt("product_id"));
-                System.out.println("Quantity: " + rs.getInt("quantity"));
+                System.out.println("Quantity: " + rs.getInt("amount"));
                 System.out.println("Purchase Price: " + rs.getDouble("purchase_price"));
                 System.out.println("Purchase Date: " + rs.getString("purchase_date"));
             }
@@ -53,7 +53,7 @@ public class ShoppingHistory {
     public static void printRecordShoppingHistory(String record_id) {
         String url = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\history.db";  // 数据库连接 URL
 
-        String sql = "SELECT * FROM shopping_history WHERE record_id = ?";
+        String sql = "SELECT * FROM purchase_history WHERE record_id = ?";
 
         try (Connection conn = DriverManager.getConnection(url);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -64,7 +64,7 @@ public class ShoppingHistory {
             while (rs.next()) {
                 System.out.println("Record ID: " + rs.getInt("username"));
                 System.out.println("Product ID: " + rs.getInt("product_id"));
-                System.out.println("Quantity: " + rs.getInt("quantity"));
+                System.out.println("Quantity: " + rs.getInt("amount"));
                 System.out.println("Purchase Price: " + rs.getDouble("purchase_price"));
                 System.out.println("Purchase Date: " + rs.getString("purchase_date"));
             }

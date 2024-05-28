@@ -84,6 +84,25 @@ public class ThingOperate {
             return -1;
         }
     }
+    public static void getThingName(int thing_id) {
+        String sql = "SELECT thing_name FROM products WHERE thing_id = ?";
+
+        try (Connection conn = DriverManager.getConnection(url);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, thing_id);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                System.out.println(rs.getString("thing_name")+",");
+            } else {
+                System.out.println("没有找到指定的商品");
+            }
+        } catch (SQLException e) {
+            System.out.println("数据库操作出错: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
     public static void findAndPrintProductByName(String thing_name) {
         String sql = "SELECT * FROM products WHERE thing_name = ?";
 

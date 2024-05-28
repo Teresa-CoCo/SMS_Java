@@ -80,6 +80,8 @@ public class ShoppingCart {
                 while (rs.next()) {
                     int thing_id = rs.getInt("thing_id");
                     int amount = rs.getInt("amount");
+                    System.out.println("商品名称: ");
+                    ThingOperate.getThingName(thing_id);
                     System.out.println("商品 ID: " + thing_id + ", 数量: " + amount);
                 }
             }
@@ -88,29 +90,26 @@ public class ShoppingCart {
             e.printStackTrace();
         }
     }
-    public static int[][] getCartItemsAndAmounts(int uid) {
-        String sql = "SELECT thing_id, amount FROM shopping_cart WHERE uid = ?";
+    public static int getCartAmount(int uid, int thing_id) {
+        String sql = "SELECT amount FROM shopping_cart WHERE uid = ? AND thing_id = ?";
 
         try (Connection conn = DriverManager.getConnection(url);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setInt(1, uid);
+            pstmt.setInt(2, thing_id);
+
             try (ResultSet rs = pstmt.executeQuery()) {
-                int[][] result = new int[rs.getFetchSize()][2];
-                int i = 0;
-                while (rs.next()) {
-                    int thing_id = rs.getInt("thing_id");
-                    int amount = rs.getInt("amount");
-                    result[i][0] = thing_id;
-                    result[i][1] = amount;
-                    i++;
+                if (rs.next()) {
+                    return rs.getInt("amount");
+                } else {
+                    return 0;
                 }
-                return result;
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println("数据库连接失败或者操作出错: " + e.getMessage());
+            e.printStackTrace();
+            return 0;
         }
     }
-
-
-    }
+}

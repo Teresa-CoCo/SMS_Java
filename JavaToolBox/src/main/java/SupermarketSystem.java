@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import functions.*;
-public class SupermarketSystem {
+public class    SupermarketSystem {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         // 创建各个功能类的实例
@@ -16,6 +16,7 @@ public class SupermarketSystem {
             System.out.println("欢迎使用超市管理系统！");
             System.out.println("1. 登录");
             System.out.println("2. 注册");
+            System.out.println("3. 退出");
             int choice = scanner.nextInt();
             switch (choice){
                 case 1:
@@ -26,7 +27,8 @@ public class SupermarketSystem {
                     //管理员菜单
                     if(login.login(username,password) && isAdmin.isAdmin(username)){
                         System.out.println("登录成功！");
-                        while(true){
+                        int flaggg =1;
+                        while(flaggg == 1){
                             //管理员操作
                             System.out.println("欢迎管理员"+username+"！");
                             System.out.println("1. 添加商品");
@@ -70,6 +72,7 @@ public class SupermarketSystem {
                                      String newPassword = scanner.next();
                                      changeManagerPassword.changePassword(username2,newPassword,isAdmin.isAdmin(username));
                                 case 6:
+                                    flaggg = 0;
                                     break;
                                 default:
                                     System.out.println("输入错误！");
@@ -80,7 +83,8 @@ public class SupermarketSystem {
                     //一般用户菜单
                     if(login.login(username,password) && isAdmin.isAdmin(username) == false){
                         System.out.println("登录成功！");
-                        while(true){
+                        int flag =1;
+                        while(flag == 1){
                             System.out.println("欢迎"+username+"！");
                             System.out.println("1. 搜寻并购买您想购买的商品");
                             System.out.println("2. 查看购物车");
@@ -103,6 +107,7 @@ public class SupermarketSystem {
                                             int productNum = scanner.nextInt();
                                             int uid = login.getID(username);
                                             int thing_id = thingOperate.getProductID(productName);
+                                            System.out.println(thing_id);
                                             ShoppingCart.addToCart(uid,thing_id,productNum);
                                     }
                                     break;
@@ -134,20 +139,44 @@ public class SupermarketSystem {
                                     }
                                     break;
                                 case 3:
-                                     int uid2 = login.getID(username);
-                                     BuyOperate.checkoutCartItem(uid2, , );
-                                     ShoppingHistory.addPurchaseRecord(uid2, , , , , );
+                                    int uid2 = login.getID(username);
+                                    ShoppingCart.viewCart(uid2);
+                                    System.out.println("请输入您要结算的商品：");
+                                    String productName4 = scanner.next();
+                                    BuyOperate.checkoutCartItem(uid2,thingOperate.getProductID(productName4),ShoppingCart.getCartAmount(uid2,thingOperate.getProductID(productName4)));
+                                    int flagg = 1;
+                                    while(flagg == 1){
+                                        System.out.println("是否继续结算？\n1. 是\n2. 否");
+                                        int choice5 = scanner.nextInt();
+                                        switch (choice5){
+                                            case 1:
+                                                System.out.println("请输入您要结算的商品：");
+                                                String productName5 = scanner.next();
+                                                BuyOperate.checkoutCartItem(uid2,thingOperate.getProductID(productName5),ShoppingCart.getCartAmount(uid2,thingOperate.getProductID(productName5)));
+                                                break;
+                                            case 2:
+                                                flagg = 0;
+                                                break;
+                                            default:
+                                                System.out.println("输入错误！");
+                                                break;
+                                        }
+                                    }
                                      break;
                                 case 4:
-                                    ShoppingHistory.printUserShoppingHistory(username);
+                                    int uid3 = login.getID(username);
+                                    ShoppingHistory.printUserShoppingHistory(String.valueOf(uid3));
                                     break;
                                 case 5:
+                                    flag = 0;
                                     break;
                                 case 6:
                                      System.out.println("请输入新密码：");
                                      String newPassword = scanner.next();
                                      changeManagerPassword.changePassword(username,newPassword,true);
+                                     break;
                                 default:
+                                    flagg = 0;
                                     System.out.println("输入错误！");
                                     break;
                             }
@@ -167,6 +196,11 @@ public class SupermarketSystem {
                     System.out.println("请输入电话号码：");
                     String phoneNumber = scanner.next();
                     functions.registrator.register(newUsername,newPassword,fullName,phoneNumber);
+                    break;
+
+                case 3:
+                    System.out.println("欢迎下次使用！");
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("输入错误！");
