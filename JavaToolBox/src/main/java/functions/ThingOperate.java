@@ -64,6 +64,26 @@ public class ThingOperate {
             e.printStackTrace();
         }
     }
+    public int getProductID(String thing_name) {
+        String sql = "SELECT thing_id FROM products WHERE thing_name = ?";
+
+        try (Connection conn = DriverManager.getConnection(url);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, thing_name);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("thing_id");
+            } else {
+                return -1;
+            }
+        } catch (SQLException e) {
+            System.out.println("数据库操作出错: " + e.getMessage());
+            e.printStackTrace();
+            return -1;
+        }
+    }
     public static void findAndPrintProductByName(String thing_name) {
         String sql = "SELECT * FROM products WHERE thing_name = ?";
 

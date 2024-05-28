@@ -3,9 +3,9 @@ package functions;
 import java.sql.*;
 
 public class ShoppingCart {
-    private String url = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\cart.db";  // 数据库连接 URL
+    public final static String url = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\cart.db";  // 数据库连接 URL
 
-    public void addToCart(int uid, int thing_id, int quantity) {
+    public static void addToCart(int uid, int thing_id, int quantity) {
         String sql = "INSERT INTO shopping_cart(uid, thing_id, amount) VALUES(?,?,?)";
 
         try (Connection conn = DriverManager.getConnection(url);
@@ -26,7 +26,7 @@ public class ShoppingCart {
             e.printStackTrace();
         }
     }
-    public void removeFromCart(int uid, int thing_id) {
+    public static void removeFromCart(int uid, int thing_id) {
         String sql = "DELETE FROM shopping_cart WHERE uid = ? AND thing_id = ?";
 
         try (Connection conn = DriverManager.getConnection(url);
@@ -46,7 +46,7 @@ public class ShoppingCart {
             e.printStackTrace();
         }
     }
-    public void updateCartItem(int uid, int thing_id, int newQuantity) {
+    public static void updateCartItem(int uid, int thing_id, int newQuantity) {
         String sql = "UPDATE shopping_cart SET amount = ? WHERE uid = ? AND thing_id = ?";
 
         try (Connection conn = DriverManager.getConnection(url);
@@ -88,4 +88,29 @@ public class ShoppingCart {
             e.printStackTrace();
         }
     }
-}
+    public static int[][] getCartItemsAndAmounts(int uid) {
+        String sql = "SELECT thing_id, amount FROM shopping_cart WHERE uid = ?";
+
+        try (Connection conn = DriverManager.getConnection(url);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, uid);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                int[][] result = new int[rs.getFetchSize()][2];
+                int i = 0;
+                while (rs.next()) {
+                    int thing_id = rs.getInt("thing_id");
+                    int amount = rs.getInt("amount");
+                    result[i][0] = thing_id;
+                    result[i][1] = amount;
+                    i++;
+                }
+                return result;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    }
