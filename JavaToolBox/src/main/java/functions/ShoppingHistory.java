@@ -73,4 +73,25 @@ public class ShoppingHistory {
             e.printStackTrace();
         }
     }
+    public static String printReturnShoppingHistory(String record_id) {
+        String url = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\history.db";  // 数据库连接 URL
+
+        String sql = "SELECT * FROM purchase_history WHERE record_id = ?";
+
+        try (Connection conn = DriverManager.getConnection(url);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, record_id);
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                return "用户名: " + rs.getInt("username")+"\n商品ID: " + rs.getInt("product_id")+"\n数量: " + rs.getInt("amount")+"\n付款价格: " + rs.getDouble("purchase_price")+"\n付款时间: " + rs.getString("purchase_date");
+            }
+        } catch (SQLException e) {
+            System.out.println("数据库连接失败或者操作出错: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

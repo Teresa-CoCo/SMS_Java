@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class ThingOperate {
     private static final String url = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\things.db";
-    public void addProduct(String thing_name, int amount, double money) {
+    public static void addProduct(String thing_name, int amount, double money) {
         String sql = "INSERT INTO products(thing_name, amount, money) VALUES(?,?,?)";
 
         try (Connection conn = DriverManager.getConnection(url);
@@ -25,7 +25,7 @@ public class ThingOperate {
             e.printStackTrace();
         }
     }
-    public void deleteProduct(String thing_name) {
+    public static void deleteProduct(String thing_name) {
         String sql = "DELETE FROM products WHERE thing_name = ?";
 
         try (Connection conn = DriverManager.getConnection(url);
@@ -44,7 +44,7 @@ public class ThingOperate {
             e.printStackTrace();
         }
     }
-    public void updateProductAmount(String thing_name, int newAmount) {
+    public static void updateProductAmount(String thing_name, int newAmount) {
         String sql = "UPDATE products SET amount = ? WHERE thing_name = ?";
 
         try (Connection conn = DriverManager.getConnection(url);
@@ -124,6 +124,27 @@ public class ThingOperate {
             System.out.println("数据库操作出错: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+    public static String findAndReturnProductByName(String thing_name) {
+        String sql = "SELECT * FROM products WHERE thing_name = ?";
+
+        try (Connection conn = DriverManager.getConnection(url);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, thing_name);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                String returnThing ="商品ID: " + rs.getInt("thing_id")+ "商品名: " + rs.getString("thing_name") +"数量: " + rs.getInt("amount")+ "价格: $" + rs.getDouble("money");
+                return returnThing;
+            } else {
+                System.out.println("没有找到指定的商品");
+            }
+        } catch (SQLException e) {
+            System.out.println("数据库操作出错: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
     }
 
 

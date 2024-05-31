@@ -58,13 +58,6 @@ public class GUI{
                 String username = textField1.getText();
                 String password = String.valueOf(passwordField1.getPassword());
                 if(login.login(username,password) && isAdmin.isAdmin(username)){
-    //                System.out.println("欢迎"+username+"！");
-    //                System.out.println("1. 搜寻并购买您想购买的商品");
-    //                System.out.println("2. 查看购物车");
-    //                System.out.println("3. 结算购物车");
-    //                System.out.println("4. 查看历史订单");
-    //                System.out.println("5. 退出登录");
-    //                System.out.println("6. 修改密码");
                     JFrame frame = new JFrame("登陆成功");
                     JPanel panel1 = new JPanel();
                     JLabel label3 = new JLabel("欢迎管理员"+username+"登录系统！");
@@ -72,6 +65,7 @@ public class GUI{
                     frame.add(panel1);
                     frame.setBounds(300,200,400,200);
                     frame.setVisible(true);
+                    admin();
                 }
                 if(login.login(username,password) && isAdmin.isAdmin(username) == false){
                     JFrame frame = new JFrame("登陆成功");
@@ -81,13 +75,7 @@ public class GUI{
                     frame.add(panel1);
                     frame.setBounds(300,200,400,200);
                     frame.setVisible(true);
-                    //                            System.out.println("欢迎管理员"+username+"！");
-                    //                            System.out.println("1. 添加商品");
-                    //                            System.out.println("2. 删除商品");
-                    //                            System.out.println("3. 修改商品数量");
-                    //                            System.out.println("4. 查询某个订单号的订单详情");
-                    //                            System.out.println("5. 修改某个用户的密码");
-                    //                            System.out.println("6. 回到上一级");
+                    user();
                 }
             }
         });
@@ -138,6 +126,245 @@ public class GUI{
                 frame.setVisible(true);
             }
         });
+    }
+    public static void admin(){
+        JFrame frame = new JFrame("欢迎使用超市管理系统");
+        JPanel panel1 = new JPanel();
+        JButton button1 = new JButton("添加商品");
+        JButton button2 = new JButton("删除商品");
+        JButton button3 = new JButton("修改商品数量");
+        JButton button4 = new JButton("查询某个订单号的订单详情");
+        JButton button5 = new JButton("修改某个用户的密码");
+        JButton button6 = new JButton("回到上一级");
+        button1.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                addthing();
+            }
+        });
+        button2.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                delthing();
+            }
+        });
+        button3.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                modifything();
+            }
+        });
+        button4.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                searchbyrecord();
+            }
+        });
+        button5.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                changeuserpassword();
+            }
+        });
+        button6.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                login();
+            }
+        });
+        panel1.add(button1);
+        panel1.add(button2);
+        panel1.add(button3);
+        panel1.add(button4);
+        panel1.add(button5);
+        panel1.add(button6);
+        frame.add(panel1);
+        frame.setBounds(300,200,400,200);
+        frame.setVisible(true);
+    }
+    public static void user(){
+        JFrame frame = new JFrame("欢迎使用超市售货系统");
+        JPanel panel1 = new JPanel();
+        JButton button1 = new JButton("搜索商品");
+        JButton button2 = new JButton("购物车");
+        JButton button3 = new JButton("历史订单");
+        JButton button4 = new JButton("回到上一级");
+        JButton button5 = new JButton("修改密码");
+        button1.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                searchthings();
+            }
+        });
+        button2.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                shoppingcart();
+            }
+        });
+        button3.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                history();
+            }
+        });
+        button4.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                login();
+            }
+        });
+        button5.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                modifypassword();
+            }
+        });
+        panel1.add(button1);
+        panel1.add(button2);
+        panel1.add(button3);
+        panel1.add(button4);
+        panel1.add(button5);
+        frame.add(panel1);
+        frame.setBounds(300,200,400,200);
+        frame.setVisible(true);
+    }
+    public static void addthing(){
+        JPanel panel1 = new JPanel();
+        JFrame frame = new JFrame("添加商品");
+        JLabel label1 = new JLabel("商品名称");
+        JTextField textField1 = new JTextField(15);
+        JLabel label2 = new JLabel("商品价格");
+        JTextField textField2 = new JTextField(15);
+        JLabel label3 = new JLabel("商品数量");
+        JTextField textField3 = new JTextField(15);
+        JButton button1 = new JButton("添加商品");
+        button1.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                String thingName = textField1.getText();
+                int productPrice = Integer.parseInt(textField2.getText());
+                int quantity = Integer.parseInt(textField3.getText());
+                ThingOperate.addProduct(thingName,productPrice,quantity);
+            }
+        });
+        panel1.add(label1);
+        panel1.add(textField1);
+        panel1.add(label2);
+        panel1.add(textField2);
+        panel1.add(label3);
+        panel1.add(textField3);
+        panel1.add(button1);
+        frame.add(panel1);
+        frame.setBounds(300,200,400,200);
+        frame.setVisible(true);
+    }
+    public static void delthing(){
+        JPanel panel1 = new JPanel();
+        JFrame frame = new JFrame("删除货物");
+        JLabel label = new JLabel("商品名称");
+        JTextField textField1 = new JTextField(15);
+        JButton button = new JButton("删除");
+        button.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                String thingName = textField1.getText();
+                ThingOperate.deleteProduct(thingName);
+            }
+        });
+        panel1.add(label);
+        panel1.add(textField1);
+        panel1.add(button);
+        frame.add(panel1);
+        frame.setBounds(300,200,400,200);
+        frame.setVisible(true);
+    }
+    public static void modifything(){
+        JPanel panel1 = new JPanel();
+        JFrame frame = new JFrame("修改商品");
+        JLabel label = new JLabel("商品名称");
+        JTextField textField1 = new JTextField(15);
+        JLabel label1 = new JLabel("新的商品数量");
+        JTextField textField2 = new JTextField(15);
+        JButton button = new JButton("修改");
+        button.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                String thingName = textField1.getText();
+                int productPrice = Integer.parseInt(textField2.getText());
+                ThingOperate.updateProductAmount(thingName,productPrice);
+            }
+        });
+        panel1.add(label);
+        panel1.add(textField1);
+        panel1.add(label1);
+        panel1.add(textField2);
+        panel1.add(button);
+        frame.add(panel1);
+        frame.setBounds(300,200,400,200);
+        frame.setVisible(true);
+    }
+    public static void searchbyrecord(){
+        JPanel panel1 = new JPanel();
+        JFrame frame = new JFrame("查询订单");
+        JLabel label1 = new JLabel("订单号");
+        JTextField textField1 = new JTextField(15);
+        JButton button = new JButton("搜索");
+        JLabel label2 = new JLabel();
+        button.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                String thingName = textField1.getText();
+                String label = ShoppingHistory.printReturnShoppingHistory(thingName);
+                label2.setText(label);
+            }
+        });
+        panel1.add(label1);
+        panel1.add(textField1);
+        panel1.add(button);
+        panel1.add(label2);
+        frame.add(panel1);
+        frame.setBounds(300,200,400,200);
+        frame.setVisible(true);
+    }
+    public static void changeuserpassword(){
+        JPanel panel1 = new JPanel();
+        JFrame frame = new JFrame("修改用户密码");
+        JLabel label1 = new JLabel("用户用户名");
+        JTextField textField1 = new JTextField(15);
+        JLabel label2 = new JLabel("用户新密码");
+        JTextField textField2 = new JTextField(15);
+        JButton button = new JButton("修改");
+        button.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                String userName = textField1.getText();
+                String password = textField2.getText();
+                changeManagerPassword.changePassword(userName,password,true);
+            }
+        });
+        panel1.add(label1);
+        panel1.add(textField1);
+        panel1.add(label2);
+        panel1.add(textField2);
+        panel1.add(button);
+        frame.add(panel1);
+        frame.setBounds(300,200,400,200);
+        frame.setVisible(true);
+    }
+    public static void searchthings(){
+        JPanel panel1 = new JPanel();
+        JFrame frame = new JFrame("搜索");
+        JLabel label1 = new JLabel("要搜索的商品名称");
+        JTextField textField1 = new JTextField(15);
+        JButton button = new JButton("搜索");
+        JLabel label2 = new JLabel();
+        button.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                String thingName = textField1.getText();
+                label2.setText(ThingOperate.findAndReturnProductByName(thingName));
+            }
+        });
+        panel1.add(label1);
+        panel1.add(textField1);
+        panel1.add(label2);
+        panel1.add(button);
+        frame.add(panel1);
+        frame.setBounds(300,200,400,200);
+        frame.setVisible(true);
+    }
+    public static void shoppingcart(){
+
+    }
+    public static void history(){
+
+    }
+    public static void modifypassword(){
+
     }
     public static void main(String[] args) {
         new GUI();
