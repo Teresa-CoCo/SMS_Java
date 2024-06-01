@@ -4,38 +4,38 @@ import javax.swing.*;
 import java.awt.event.*;//Need add this module
 import java.io.IOException;
 
-public class GUI{
-    public static void GUI(){
-    JFrame frame = new JFrame("欢迎使用超市售货系统");
-    JPanel panel1 = new JPanel();
-    JButton button1 = new JButton("登录");
-    JButton button2 = new JButton("注册");
-    JButton button3 = new JButton("退出");
-    button1.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            login();
-        }
-    });
-    button2.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            register();
-        }
-    });
-    button3.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e){
-            System.exit(0);
-        }
-    });
-    panel1.add(button1);
-    panel1.add(button2);
-    panel1.add(button3);
-    frame.add(panel1);
-    frame.setBounds(300,200,400,200);
-    frame.setVisible(true);
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+public class GUI {
+    public static void GUI() {
+        JFrame frame = new JFrame("欢迎使用超市售货系统");
+        JPanel panel1 = new JPanel();
+        JButton button1 = new JButton("登录");
+        JButton button2 = new JButton("注册");
+        JButton button3 = new JButton("退出");
+        button1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                login();
+            }
+        });
+        button2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                register();
+            }
+        });
+        button3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+        panel1.add(button1);
+        panel1.add(button2);
+        panel1.add(button3);
+        frame.add(panel1);
+        frame.setBounds(300, 200, 400, 200);
+        frame.setVisible(true);
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public static void login(){
+    public static void login() {
         JFrame frame = new JFrame("登录");
         JPanel panel1 = new JPanel();
         JLabel label1 = new JLabel("用户名:");
@@ -50,30 +50,30 @@ public class GUI{
         panel1.add(passwordField1);
         panel1.add(pressbutton1);
         frame.add(panel1);
-        frame.setBounds(300,200,400,200);
+        frame.setBounds(300, 200, 400, 200);
         frame.setVisible(true);
 
-        pressbutton1.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
+        pressbutton1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 String username = textField1.getText();
                 String password = String.valueOf(passwordField1.getPassword());
-                if(login.login(username,password) && isAdmin.isAdmin(username)){
+                if (login.login(username, password) && isAdmin.isAdmin(username)) {
                     JFrame frame = new JFrame("登陆成功");
                     JPanel panel1 = new JPanel();
-                    JLabel label3 = new JLabel("欢迎管理员"+username+"登录系统！");
+                    JLabel label3 = new JLabel("欢迎管理员" + username + "登录系统！");
                     panel1.add(label3);
                     frame.add(panel1);
-                    frame.setBounds(300,200,400,200);
+                    frame.setBounds(300, 200, 400, 200);
                     frame.setVisible(true);
                     admin();
                 }
-                if(login.login(username,password) && isAdmin.isAdmin(username) == false){
+                if (login.login(username, password) && isAdmin.isAdmin(username) == false) {
                     JFrame frame = new JFrame("登陆成功");
                     JPanel panel1 = new JPanel();
-                    JLabel label3 = new JLabel("欢迎用户"+username+"登录系统！");
+                    JLabel label3 = new JLabel("欢迎用户" + username + "登录系统！");
                     panel1.add(label3);
                     frame.add(panel1);
-                    frame.setBounds(300,200,400,200);
+                    frame.setBounds(300, 200, 400, 200);
                     frame.setVisible(true);
                     user();
                 }
@@ -81,7 +81,7 @@ public class GUI{
         });
     }
 
-    public static void register(){
+    public static void register() {
         JFrame frame = new JFrame("注册");
         JPanel panel1 = new JPanel();
         JLabel label1 = new JLabel("用户名:");
@@ -104,11 +104,11 @@ public class GUI{
         panel1.add(textField3);
         panel1.add(pressbutton1);
         frame.add(panel1);
-        frame.setBounds(300,200,400,200);
+        frame.setBounds(300, 200, 400, 200);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        pressbutton1.addActionListener(new ActionListener(){
+        pressbutton1.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -116,18 +116,19 @@ public class GUI{
                 String password = String.valueOf(passwordField1.getPassword());
                 String fullname = textField2.getText();
                 String phone = textField3.getText();
-                functions.registrator.register(username,password,fullname,phone);
+                functions.registrator.register(username, password, fullname, phone);
                 JFrame frame = new JFrame("注册成功");
                 JPanel panel1 = new JPanel();
-                JLabel label3 = new JLabel(username+"注册成功");
+                JLabel label3 = new JLabel(username + "注册成功");
                 panel1.add(label3);
                 frame.add(panel1);
-                frame.setBounds(300,200,400,200);
+                frame.setBounds(300, 200, 400, 200);
                 frame.setVisible(true);
             }
         });
     }
-    public static void admin(){
+
+    public static void admin() {
         JFrame frame = new JFrame("欢迎使用超市管理系统");
         JPanel panel1 = new JPanel();
         JButton button1 = new JButton("添加商品");
@@ -136,33 +137,33 @@ public class GUI{
         JButton button4 = new JButton("查询某个订单号的订单详情");
         JButton button5 = new JButton("修改某个用户的密码");
         JButton button6 = new JButton("回到上一级");
-        button1.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
+        button1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 addthing();
             }
         });
-        button2.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
+        button2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 delthing();
             }
         });
-        button3.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
+        button3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 modifything();
             }
         });
-        button4.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
+        button4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 searchbyrecord();
             }
         });
-        button5.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
+        button5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 changeuserpassword();
             }
         });
-        button6.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
+        button6.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 login();
             }
         });
@@ -173,10 +174,11 @@ public class GUI{
         panel1.add(button5);
         panel1.add(button6);
         frame.add(panel1);
-        frame.setBounds(300,200,400,200);
+        frame.setBounds(300, 200, 400, 200);
         frame.setVisible(true);
     }
-    public static void user(){
+
+    public static void user() {
         JFrame frame = new JFrame("欢迎使用超市售货系统");
         JPanel panel1 = new JPanel();
         JButton button1 = new JButton("搜索商品");
@@ -184,29 +186,29 @@ public class GUI{
         JButton button3 = new JButton("历史订单");
         JButton button4 = new JButton("回到上一级");
         JButton button5 = new JButton("修改密码");
-        button1.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
+        button1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 searchthings();
             }
         });
-        button2.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                shoppingcart();
+        button2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                building();
             }
         });
-        button3.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                history();
+        button3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                building();
             }
         });
-        button4.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                login();
+        button4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
             }
         });
-        button5.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                modifypassword();
+        button5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                building();
             }
         });
         panel1.add(button1);
@@ -215,10 +217,11 @@ public class GUI{
         panel1.add(button4);
         panel1.add(button5);
         frame.add(panel1);
-        frame.setBounds(300,200,400,200);
+        frame.setBounds(300, 200, 400, 200);
         frame.setVisible(true);
     }
-    public static void addthing(){
+
+    public static void addthing() {
         JPanel panel1 = new JPanel();
         JFrame frame = new JFrame("添加商品");
         JLabel label1 = new JLabel("商品名称");
@@ -228,12 +231,12 @@ public class GUI{
         JLabel label3 = new JLabel("商品数量");
         JTextField textField3 = new JTextField(15);
         JButton button1 = new JButton("添加商品");
-        button1.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
+        button1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 String thingName = textField1.getText();
                 int productPrice = Integer.parseInt(textField2.getText());
                 int quantity = Integer.parseInt(textField3.getText());
-                ThingOperate.addProduct(thingName,productPrice,quantity);
+                ThingOperate.addProduct(thingName, productPrice, quantity);
             }
         });
         panel1.add(label1);
@@ -244,17 +247,18 @@ public class GUI{
         panel1.add(textField3);
         panel1.add(button1);
         frame.add(panel1);
-        frame.setBounds(300,200,400,200);
+        frame.setBounds(300, 200, 400, 200);
         frame.setVisible(true);
     }
-    public static void delthing(){
+
+    public static void delthing() {
         JPanel panel1 = new JPanel();
         JFrame frame = new JFrame("删除货物");
         JLabel label = new JLabel("商品名称");
         JTextField textField1 = new JTextField(15);
         JButton button = new JButton("删除");
-        button.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 String thingName = textField1.getText();
                 ThingOperate.deleteProduct(thingName);
             }
@@ -263,10 +267,11 @@ public class GUI{
         panel1.add(textField1);
         panel1.add(button);
         frame.add(panel1);
-        frame.setBounds(300,200,400,200);
+        frame.setBounds(300, 200, 400, 200);
         frame.setVisible(true);
     }
-    public static void modifything(){
+
+    public static void modifything() {
         JPanel panel1 = new JPanel();
         JFrame frame = new JFrame("修改商品");
         JLabel label = new JLabel("商品名称");
@@ -274,11 +279,11 @@ public class GUI{
         JLabel label1 = new JLabel("新的商品数量");
         JTextField textField2 = new JTextField(15);
         JButton button = new JButton("修改");
-        button.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 String thingName = textField1.getText();
                 int productPrice = Integer.parseInt(textField2.getText());
-                ThingOperate.updateProductAmount(thingName,productPrice);
+                ThingOperate.updateProductAmount(thingName, productPrice);
             }
         });
         panel1.add(label);
@@ -287,18 +292,19 @@ public class GUI{
         panel1.add(textField2);
         panel1.add(button);
         frame.add(panel1);
-        frame.setBounds(300,200,400,200);
+        frame.setBounds(300, 200, 400, 200);
         frame.setVisible(true);
     }
-    public static void searchbyrecord(){
+
+    public static void searchbyrecord() {
         JPanel panel1 = new JPanel();
         JFrame frame = new JFrame("查询订单");
         JLabel label1 = new JLabel("订单号");
         JTextField textField1 = new JTextField(15);
         JButton button = new JButton("搜索");
         JLabel label2 = new JLabel();
-        button.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 String thingName = textField1.getText();
                 String label = ShoppingHistory.printReturnShoppingHistory(thingName);
                 label2.setText(label);
@@ -309,10 +315,11 @@ public class GUI{
         panel1.add(button);
         panel1.add(label2);
         frame.add(panel1);
-        frame.setBounds(300,200,400,200);
+        frame.setBounds(300, 200, 400, 200);
         frame.setVisible(true);
     }
-    public static void changeuserpassword(){
+
+    public static void changeuserpassword() {
         JPanel panel1 = new JPanel();
         JFrame frame = new JFrame("修改用户密码");
         JLabel label1 = new JLabel("用户用户名");
@@ -320,11 +327,11 @@ public class GUI{
         JLabel label2 = new JLabel("用户新密码");
         JTextField textField2 = new JTextField(15);
         JButton button = new JButton("修改");
-        button.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 String userName = textField1.getText();
                 String password = textField2.getText();
-                changeManagerPassword.changePassword(userName,password,true);
+                changeManagerPassword.changePassword(userName, password, true);
             }
         });
         panel1.add(label1);
@@ -333,20 +340,38 @@ public class GUI{
         panel1.add(textField2);
         panel1.add(button);
         frame.add(panel1);
-        frame.setBounds(300,200,400,200);
+        frame.setBounds(300, 200, 400, 200);
         frame.setVisible(true);
     }
-    public static void searchthings(){
+
+    public static void searchthings() {
         JPanel panel1 = new JPanel();
         JFrame frame = new JFrame("搜索");
         JLabel label1 = new JLabel("要搜索的商品名称");
         JTextField textField1 = new JTextField(15);
         JButton button = new JButton("搜索");
         JLabel label2 = new JLabel();
-        button.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 String thingName = textField1.getText();
                 label2.setText(ThingOperate.findAndReturnProductByName(thingName));
+                JLabel label3 = new JLabel("您需要将该商品加入到购物车吗？");
+                JButton button1 = new JButton("是");
+                JButton button2 = new JButton("否");
+                panel1.add(label3);
+                panel1.add(button1);
+                panel1.add(button2);
+                button1.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        building();
+                    }
+                });
+                button2.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        //关闭此窗口
+                        frame.dispose();
+                    }
+                });
             }
         });
         panel1.add(label1);
@@ -354,18 +379,33 @@ public class GUI{
         panel1.add(label2);
         panel1.add(button);
         frame.add(panel1);
-        frame.setBounds(300,200,400,200);
+        frame.setBounds(300, 200, 400, 200);
         frame.setVisible(true);
     }
-    public static void shoppingcart(){
 
+    public static void building() {
+        JFrame frame = new JFrame("正在施工。。。。。。");
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        JLabel alarm = new JLabel("Still Working......");
+        panel.add(alarm);
+        frame.add(panel);
+        frame.setBounds(300, 200, 400, 300);
+        frame.setVisible(true);
     }
-    public static void history(){
+//
+//    public static void shoppingcart() {
+//
+//    }
+//
+//    public static void history() {
+//
+//    }
+//
+//    public static void modifypassword() {
+//
+//    }
 
-    }
-    public static void modifypassword(){
-
-    }
     public static void main(String[] args) {
         new GUI();
         GUI();
