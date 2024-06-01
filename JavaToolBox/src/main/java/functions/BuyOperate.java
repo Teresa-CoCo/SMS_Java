@@ -7,9 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BuyOperate {
-    public final static String url1 = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\things.db";  // 商品数据库连接 URL
-    public final static String url2 = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\history.db";  // 历史记录数据库连接 URL
-    public final static String url3 = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\cart.db";  // 购物车数据库连接 URL
+    public final static String url1 = "jdbc:sqlite:src/main/java/things.db";  // 商品数据库连接 URL
+    public final static String url2 = "jdbc:sqlite:src/main/java/history.db";  // 历史记录数据库连接 URL
+    public final static String url3 = "jdbc:sqlite:src/main/java/cart.db";  // 购物车数据库连接 URL
 
     public static void checkoutCartItem(int uid, int thing_id, int quantity) {
         try (Connection conn = DriverManager.getConnection(url1);

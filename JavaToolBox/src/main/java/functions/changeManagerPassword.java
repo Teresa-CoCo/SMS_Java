@@ -2,7 +2,7 @@ package functions;//用于用户登陆后重置密码，或超级管理员修改
 import java.sql.*;
 public class changeManagerPassword {
     public static void changePassword(String username ,String newPassword, boolean isAdmin){
-        String url = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\user.db";  // 数据库连接 URL
+        String url = "jdbc:sqlite:src/main/java/user.db";  // 数据库连接 URL
         String sql = "UPDATE users SET password = ? WHERE username = ?";
 
         try (Connection conn = DriverManager.getConnection(url);

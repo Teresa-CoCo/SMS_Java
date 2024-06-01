@@ -3,7 +3,7 @@ package functions;
 import java.sql.*;
 
 public class ShoppingCart {
-    public final static String url = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\cart.db";  // 数据库连接 URL
+    public final static String url = "jdbc:sqlite:src/main/java/cart.db";  // 数据库连接 URL
 
     public static void addToCart(int uid, int thing_id, int quantity) {
         String sql = "INSERT INTO shopping_cart(uid, thing_id, amount) VALUES(?,?,?)";

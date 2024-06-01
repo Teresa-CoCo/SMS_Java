@@ -5,7 +5,7 @@ import java.sql.Statement;
 
 public class setUpUserDataBase {
     public static void main(String[] args) {
-        String url = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\user.db";
+        String url = "jdbc:sqlite:src/main/java/user.db";
         try (Connection conn = DriverManager.getConnection(url)) {
             if (conn != null) {
                 try (Statement stmt = conn.createStatement()) {

@@ -5,7 +5,7 @@ import java.sql.Statement;
 
 public class setUpCartDataBase {
     public static void main(String[] args) {
-        String url = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\cart.db";
+        String url = "jdbc:sqlite:src/main/java/cart.db";
 
 
         try (Connection conn = DriverManager.getConnection(url)) {

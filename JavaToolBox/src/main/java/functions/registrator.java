@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class registrator {
     public static void register(String username, String password, String fullname, String phone) {
-        String url = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\user.db";  // 数据库连接 URL
+        String url = "jdbc:sqlite:src/main/java/user.db";  // 数据库连接 URL
         String sql = "INSERT INTO users(username, password, fullname, phone, is_admin) VALUES(?,?,?,?,0)";
 
         try (Connection conn = DriverManager.getConnection(url);

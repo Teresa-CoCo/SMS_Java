@@ -3,7 +3,7 @@ package functions;
 import java.sql.*;
 
 public class login {
-    private static final String url = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\user.db";
+    private static final String url = "jdbc:sqlite:src/main/java/user.db";
     public static boolean login(String username, String password) {
           // 数据库连接 URL
 

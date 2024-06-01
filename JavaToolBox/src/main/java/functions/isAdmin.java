@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class isAdmin {
     public static boolean isAdmin(String username) {
-        String url = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\user.db";  // 数据库连接 URL
+        String url = "jdbc:sqlite:src/main/java/user.db";  // 数据库连接 URL
 
         String sql = "SELECT * FROM users WHERE username = ? AND is_admin = 1";
 
