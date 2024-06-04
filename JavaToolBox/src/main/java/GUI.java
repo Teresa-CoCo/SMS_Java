@@ -1,7 +1,8 @@
 import functions.*;
-import javax.swing.*;
-import java.awt.event.*;
 
+import javax.swing.*;
+import java.awt.event.*;//Need add this module
+import java.io.IOException;
 
 public class GUI {
     public static void GUI() {
@@ -10,7 +11,6 @@ public class GUI {
         JButton button1 = new JButton("登录");
         JButton button2 = new JButton("注册");
         JButton button3 = new JButton("退出");
-        JLabel background = new JLabel(new ImageIcon("src/main/resources/super.png"));
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 login();
@@ -29,11 +29,10 @@ public class GUI {
         panel1.add(button1);
         panel1.add(button2);
         panel1.add(button3);
-        panel1.add(background);
         frame.add(panel1);
         frame.setBounds(300, 200, 400, 200);
         frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public static void login() {
@@ -107,7 +106,7 @@ public class GUI {
         frame.add(panel1);
         frame.setBounds(300, 200, 400, 200);
         frame.setVisible(true);
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         pressbutton1.addActionListener(new ActionListener() {
 

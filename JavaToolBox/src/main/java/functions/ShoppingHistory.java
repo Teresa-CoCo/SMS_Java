@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class ShoppingHistory {
     public static void addPurchaseRecord(String username, int product_id, int quantity, double purchase_price) {
-        String url = "jdbc:sqlite:src/main/java/history.db";  // 数据库连接 URL
+        String url = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\history.db";  // 数据库连接 URL
 
         String sql = "INSERT INTO purchase_history(username, product_id, quantity, purchase_price, purchase_date) VALUES(?,?,?,?, CURRENT_TIMESTAMP)";
 
@@ -28,7 +28,7 @@ public class ShoppingHistory {
         }
     }
     public static void printUserShoppingHistory(String username) {
-        String url = "jdbc:sqlite:src/main/java/history.db";  // 数据库连接 URL
+        String url = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\history.db";  // 数据库连接 URL
 
         String sql = "SELECT * FROM purchase_history WHERE username = ?";
 
@@ -51,7 +51,7 @@ public class ShoppingHistory {
         }
     }
     public static void printRecordShoppingHistory(String record_id) {
-        String url = "jdbc:sqlite:src/main/java/history.db";  // 数据库连接 URL
+        String url = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\history.db";  // 数据库连接 URL
 
         String sql = "SELECT * FROM purchase_history WHERE record_id = ?";
 
@@ -74,7 +74,7 @@ public class ShoppingHistory {
         }
     }
     public static String printReturnShoppingHistory(String record_id) {
-        String url = "jdbc:sqlite:src/main/java/history.db";  // 数据库连接 URL
+        String url = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\history.db";  // 数据库连接 URL
 
         String sql = "SELECT * FROM purchase_history WHERE record_id = ?";
 

@@ -3,7 +3,7 @@ package functions;
 import java.sql.*;
 
 public class ThingOperate {
-    private static final String url = "jdbc:sqlite:src/main/java/things.db";
+    private static final String url = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\things.db";
     public static void addProduct(String thing_name, int amount, double money) {
         String sql = "INSERT INTO products(thing_name, amount, money) VALUES(?,?,?)";
 
