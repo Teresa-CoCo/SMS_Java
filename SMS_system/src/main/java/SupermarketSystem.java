@@ -145,7 +145,8 @@ public class SupermarketSystem {
                                     ShoppingCart.viewCart(uid2);
                                     System.out.println("请输入您要结算的商品：");
                                     String productName4 = scanner.next();
-                                    BuyOperate.checkoutCartItem(uid2, thingOperate.getProductID(productName4), ShoppingCart.getCartAmount(uid2, thingOperate.getProductID(productName4)));
+                                    double discount = DiscountSystem.calculateDiscount(ShoppingHistory.getHistoryCount(username));
+                                    BuyOperate.checkoutCartItem(uid2, thingOperate.getProductID(productName4), ShoppingCart.getCartAmount(uid2, thingOperate.getProductID(productName4)),discount);
                                     int flagg = 1;
                                     while (flagg == 1) {
                                         System.out.println("是否继续结算？\n1. 是\n2. 否");
@@ -154,7 +155,7 @@ public class SupermarketSystem {
                                             case 1:
                                                 System.out.println("请输入您要结算的商品：");
                                                 String productName5 = scanner.next();
-                                                BuyOperate.checkoutCartItem(uid2, thingOperate.getProductID(productName5), ShoppingCart.getCartAmount(uid2, thingOperate.getProductID(productName5)));
+                                                BuyOperate.checkoutCartItem(uid2, thingOperate.getProductID(productName5), ShoppingCart.getCartAmount(uid2, thingOperate.getProductID(productName5)),discount);
                                                 break;
                                             case 2:
                                                 flagg = 0;

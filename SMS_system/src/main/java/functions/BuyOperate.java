@@ -11,7 +11,7 @@ public class BuyOperate {
     public final static String url2 = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\history.db";  // 历史记录数据库连接 URL
     public final static String url3 = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\cart.db";  // 购物车数据库连接 URL
 
-    public static void checkoutCartItem(int uid, int thing_id, int quantity) {
+    public static void checkoutCartItem(int uid, int thing_id, int quantity, double discount) {
         try (Connection conn = DriverManager.getConnection(url1);
              Connection connhis = DriverManager.getConnection(url2);
              Connection conncart = DriverManager.getConnection(url3)) {
@@ -32,7 +32,7 @@ public class BuyOperate {
                             // 4. 从购物车中移除已结算的商品
                             removeFromCart(conncart, uid, thing_id, quantity);
                             // 计算总金额
-                            double totalCost = price * quantity;
+                            double totalCost = (price * quantity)*discount;
 
                             conn.commit();
                             System.out.println("结算成功，总金额: $" + totalCost);

@@ -93,5 +93,25 @@ public class ShoppingHistory {
         }
         return null;
     }
+    public static int getHistoryCount(String username) {
+        String url = "jdbc:sqlite:C:\\Users\\prime\\IdeaProjects\\untitled\\src\\main\\java\\history.db";  // 数据库连接 URL
 
+        String sql = "SELECT * FROM purchase_history WHERE username = ?";
+
+        try (Connection conn = DriverManager.getConnection(url);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+            int count = 0;
+            while (rs.next()) {
+                count++;
+            }
+            return count;
+        } catch (SQLException e) {
+            System.out.println("数据库连接失败或者操作出错: " + e.getMessage());
+            e.printStackTrace();
+            return -1;
+        }
+    }
 }
